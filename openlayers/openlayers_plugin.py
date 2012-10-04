@@ -136,6 +136,7 @@ class OpenlayersPlugin:
     self.olLayerTypeRegistry.add( OlLayerType(self, 'Bing Aerial', 'bing_icon.png',  'bing_aerial.html', True) )
     self.olLayerTypeRegistry.add( OlLayerType(self, 'Bing Aerial with labels', 'bing_icon.png',  'bing_aerial-labels.html', True) )
     self.olLayerTypeRegistry.add( OlLayerType(self, 'Apple iPhoto map', 'apple_icon.png', 'apple.html', True) )
+    self.olLayerTypeRegistry.add( OlLayerType(self, 'TMS Overlay', 'osm_icon.png', 'trash_layer.html', True) )
     # Overview
     self.olOverview = OLOverview( iface, self.olLayerTypeRegistry )
 
