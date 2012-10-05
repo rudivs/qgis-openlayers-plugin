@@ -14,6 +14,7 @@
 		    <script type="text/javascript">
 		        var map;
 			    var mapBounds = new OpenLayers.Bounds( 15.9362103992, -34.9154044606, 33.5135016314, -21.9620062721);
+			    // set to min / max zoom levels for which there are tiles
 			    var mapMinZoom = 1;
 			    var mapMaxZoom = 10;
 
@@ -28,6 +29,7 @@
 	                displayProjection: new OpenLayers.Projection("EPSG:4326"),
 	                units: "m",
 	                maxResolution: 156543.0339,
+	                //set to maximum extent of TMS (use gdalinfo)
 	                maxExtent: new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34)
 		            };
 	            map = new OpenLayers.Map('map', options);
@@ -49,11 +51,8 @@
 	            var x = Math.round((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
 	            var y = Math.round((bounds.bottom - this.tileOrigin.lat) / (res * this.tileSize.h));
 	            var z = this.map.getZoom();
-	            if (this.map.baseLayer.name == 'Virtual Earth Roads' || this.map.baseLayer.name == 'Virtual Earth Aerial' || this.map.baseLayer.name == 'Virtual Earth Hybrid') {
-	               z = z + 1;
-	            }
 		        if (mapBounds.intersectsBounds( bounds ) && z >= mapMinZoom && z <= mapMaxZoom ) {
-	               //console.log( this.url + z + "/" + x + "/" + y + "." + this.type);
+	               // set to base url of tiles
 	               return "/home/rudi/personal/GIS/trash/trshmap/" + z + "/" + x + "/" + y + "." + this.type;
                 } else {
                    return "http://www.maptiler.org/img/none.png";
